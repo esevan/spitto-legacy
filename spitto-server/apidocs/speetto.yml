@@ -1,0 +1,38 @@
+definitions:
+  Prize:
+    type: object
+    properties:
+      full:
+        type: integer
+      left:
+        type: integer
+      prize:
+        type: integer
+  Speetto:
+    type: object
+    properties:
+      title:
+        type: string
+      first:
+        $ref: '#/definitions/Prize'
+      second:
+        $ref: '#/definitions/Prize'
+      third:
+        $ref: '#/definitions/Prize'
+      total:
+        type: integer
+      publishRate:
+        type: number
+  Resp:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Speetto'
+      
+responses:
+  200:
+    description: Get speetto information from server
+    schema:
+      $ref: '#/definitions/Resp'
